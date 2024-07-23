@@ -7,8 +7,9 @@
 
 {% block conteudo %}
     <ul>
-        <li>Pizza de Camarão - R$ 150</li>
-        <li>Pizza de Calabreza - R$ 50</li>
-        <li>Pizza Nordestina - R$ 60</li>
+        {% for p in pizzas %}
+            <li> {{p.sabor}} - R$ {{p.preco}} </li>
+            <li> <img src="{{url_for('static', filename='imgs/'+p.imagem)}}"></li>
+        {% endfor %}
     </ul>
 {% endblock %}
