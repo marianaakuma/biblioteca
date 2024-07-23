@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %} {% endblock %}</title>
+</head>
+<body>
+    <a href="{{url_for('index')}}"> Página Incial</a> |
+    <a href="{{url_for('cardapio')}}"> Cardápio </a> |
+    <a href="#"> Avaliações </a> |
+    <a href="#"> Fale conosco </a> |
+    <a href="#"> Login </a> |
+
+    <div>
+        {% block conteudo %}
+        {% endblock %}
+    </div>
+</body>
+</html>
