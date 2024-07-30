@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, redirect
+from flask import Flask, render_template, flash, redirect, request, url_for
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'sua-palavra-secreta'
@@ -28,3 +28,13 @@ def cardapio():
 @app.route('/login')
 def login():
     return render_template('login.html')
+
+@app.route('/autenticar', methods=['POST'])
+def autenticar():
+    usuario = request.form['usuario']
+    senha = request.form['senha']
+    if usuario == 'admin' and senha == 'senha123':
+        return 'Bem vindo!'
+    else:
+        flash('Dados incorretos. Login ou senha inválidos')
+        return redirect(url_for('login'))
