@@ -37,4 +37,5 @@ def autenticar():
         return 'Bem vindo!'
     else:
         flash('Dados incorretos. Login ou senha inválidos')
+        flash('Tente novamente')
         return redirect(url_for('login'))

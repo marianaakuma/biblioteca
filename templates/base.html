@@ -16,7 +16,7 @@
     {% set mensagens = get_flashed_messages() %}
     {% if mensagens %}
         {% for m in mensagens %}
-            <div> {{m}} </div>
+            <div class="alert alert-danger" role="alert"> {{m}} </div>
         {% endfor %}
     {% endif %}
 
