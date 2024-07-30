@@ -13,10 +13,10 @@
     <a href="#" class="btn btn-outline-primary"> Fale conosco </a> |
     <a href="#" class="btn btn-outline-primary"> Login </a> |
 
-    {% set mensagens = get_flashed_messages() %}
+    {% set mensagens = get_flashed_messages(with_categories=true) %}
     {% if mensagens %}
-        {% for m in mensagens %}
-            <div class="alert alert-danger" role="alert"> {{m}} </div>
+        {% for cat, m in mensagens %}
+            <div class="alert alert-{{cat}}" role="alert"> {{m}} </div>
         {% endfor %}
     {% endif %}
 

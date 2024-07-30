@@ -36,6 +36,6 @@ def autenticar():
     if usuario == 'admin' and senha == 'senha123':
         return 'Bem vindo!'
     else:
-        flash('Dados incorretos. Login ou senha inválidos')
-        flash('Tente novamente')
+        flash('Dados incorretos. Login ou senha inválidos', 'danger')
+        flash('Tente novamente', 'warning')
         return redirect(url_for('login'))
