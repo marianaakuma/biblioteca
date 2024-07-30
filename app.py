@@ -1,6 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, flash, redirect
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'sua-palavra-secreta'
 
 @app.route('/')
 def index():
@@ -23,3 +24,7 @@ def cardapio():
             ]
 
     return render_template('cardapio.html', pizzas=pizzas)
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
