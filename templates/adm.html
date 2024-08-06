@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração</title>
+</head>
+<body>
+    <h1>Administração de Livros</h1>
+    <a href="/admin/adicionar">Adicionar Novo Livro</a>
+    <h2>Lista de Livros</h2>
+    <ul>
+        {% for livro in livros %}
+            <li>
+                {{ livro.titulo }} - {{ livro.autor }} - {{ livro.ano }}
+                <a href="{{ url_for('editar_livro', livro_id=livro.id) }}">Editar</a>
+                <a href="{{ url_for('excluir_livro', livro_id=livro.id) }}">Excluir</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/">Voltar à página principal</a>
+</body>
+</html>

@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa de Livros</title>
+</head>
+<body>
+    <h1>Pesquisa de Livros</h1>
+    <form method="post" action="/pesquisa">
+        <input type="text" name="termo" placeholder="Digite o título do livro" required>
+        <button type="submit">Pesquisar</button>
+    </form>
+
+    {% if resultados %}
+        <h2>Resultados da Pesquisa</h2>
+        <ul>
+            {% for livro in resultados %}
+                <li>
+                    <a href="{{ url_for('descricao', livro_id=livro['id']) }}">{{ livro['titulo'] }}</a> - {{ livro['autor'] }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum livro encontrado.</p>
+    {% endif %}
+</body>
+</html>
+
+

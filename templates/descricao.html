@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Livro</title>
+</head>
+<body>
+    <h1>Detalhes do Livro</h1>
+    <p><strong>Título:</strong> {{ livro.titulo }}</p>
+    <p><strong>Autor:</strong> {{ livro.autor }}</p>
+    <p><strong>Ano:</strong> {{ livro.ano }}</p>
+    <p><strong>Descrição:</strong> {{ livro.descricao }}</p>
+
+
+    {% if favorito %}
+    <a href="{{ url_for('remover_favorito', livro_id=livro.id) }}">Remover dos Favoritos</a>
+{% else %}
+    <a href="{{ url_for('marcar_favorito', livro_id=livro.id) }}">Marcar como Favorito</a>
+{% endif %}
+
+<a href="/pesquisa">Voltar à pesquisa</a>
+
+</body>
+</html>
