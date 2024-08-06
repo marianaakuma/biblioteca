@@ -7,23 +7,23 @@ app.config['SECRET_KEY'] = 'sua-palavra-secreta'
 def index():
     return render_template('index.html')
 
-@app.route('/cardapio')
-def cardapio():
+@app.route('/generos')
+def generos():
 
-    pizzas = [{'sabor': 'Camarão', 'preco': '150', 'imagem': 'camarao.webp'},
-              {'sabor': 'Calabreza', 'preco': '50', 'imagem': 'calabreza.jfif'},
-              {'sabor': 'Nordestina', 'preco': '60', 'imagem': 'nordestina.jpg'},
-              {'sabor': 'Frango com Catupiry', 'preco': '55', 'imagem': 'pizza.jpg'},
-              {'sabor': 'Quatro queijos', 'preco': '70', 'imagem': 'pizza.jpg'},
-              {'sabor': 'Marguerita', 'preco': '60', 'imagem': 'pizza.jpg'},
-              {'sabor': 'Havaiana', 'preco': '65', 'imagem': 'pizza.jpg'},
-              {'sabor': 'Três quejos', 'preco': '45', 'imagem': 'pizza.jpg'}, 
-              {'sabor': 'Portugesa', 'preco': '60', 'imagem': 'pizza.jpg'},
-              {'sabor': 'Doce de leite', 'preco': '50', 'imagem': 'pizza.jpg'},
-              {'sabor': 'Chocolate', 'preco': '50', 'imagem': 'pizza.jpg'},
+    Livros = [{'titulos': 'Dom Casmurro','1899','imagem': 'camarao.webp'},
+              {'titulos': ' George Orwell ','1984','imagem':'calabreza.jfif'},
+              {'titulos': 'O Sol é para Todos','1960','imagem':'nordestina.jpg'},
+              {'titulos': 'Cem Anos de Solidão','(1967','imagem': 'pizza.jpg'},
+              {'titulos': 'O Senhor dos Anéis: A Sociedade do Anel','1954','imagem': 'pizza.jpg'},
+              {'titulos': 'The Great Gatsby','1925','imagem': 'pizza.jpg'},
+              {'titulos': 'Orgulho e Preconceito','1813','imagem': 'pizza.jpg'},
+              {'titulos': 'O Apanhador no Campo de Centeio','1951','imagem': 'pizza.jpg'}, 
+              {'titulos': 'A Revolução dos Bichos','1945','imagem': 'pizza.jpg'},
+              {'titulos': 'O Pequeno Príncipe','1943','imagem': 'pizza.jpg'},
+              {'titulos': 'A Menina que Roubava Livros','2005','imagem': 'pizza.jpg'},
             ]
 
-    return render_template('cardapio.html', pizzas=pizzas)
+    return render_template('generos.html', livros=livros)
 
 @app.route('/login')
 def login():
