@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, redirect, request, url_for
+from flask import Flask, render_template, flash, redirect, request, url_for, session
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'sua-palavra-secreta'
@@ -29,10 +29,12 @@ def generos():
 
     return render_template('generos.html', livros=livros)
 
-#Página de login onde o usuário pode inserir suas credenciais
-@app.route('/login')
-def login():
-    return render_template('login.html')
+
+
+@app.route('/logi')
+def logi():
+    return render_template('logi.html')
+
 
 #Autenticação do usuário. Verifica se o nome de usuário e senha estão corretos.
 @app.route('/autenticar', methods=['POST'])
@@ -136,5 +138,5 @@ def excluir_livro(livro_id):
     livros = [livro for livro in livros if livro['id'] != livro_id]
     return redirect(url_for('admin'))
 
-    if __name__ == '__main__':
+if __name__ == '__main__':
     app.run(debug=True)
