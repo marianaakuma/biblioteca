@@ -30,113 +30,11 @@ def generos():
     return render_template('generos.html', livros=livros)
 
 
-
 @app.route('/logi')
 def logi():
     return render_template('logi.html')
 
 
-#Autenticação do usuário. Verifica se o nome de usuário e senha estão corretos.
-@app.route('/autenticar', methods=['POST'])
-def autenticar():
-    usuario = request.form['usuario']
-    senha = request.form['senha']
-    if usuario == 'admin' and senha == 'senha123':
-        return 'Bem vindo!'
-    else:
-        flash('Dados incorretos. Login ou senha inválidos', 'danger')
-        flash('Tente novamente', 'warning')
-        return redirect(url_for('login'))
 
 
-#Página de pesquisa de livros. Exibe resultados com base no termo de pesquisa fornecido
-@app.route('/pesquisa', methods=['GET', 'POST'])
-def pesquisa():
-    resultados = []
-    if request.method == 'POST':
-        termo = request.form.get('termo', '').lower()
-        resultados = [livro for livro in livros if termo in livro['titulo'].lower()]
-    return render_template('pesquisa.html', resultados=resultados)
 
-
-#Marcar um livro como favorito, adicionando seu ID à sessão do usuário
-@app.route('/marcar_favorito/<int:livro_id>')
-def marcar_favorito(livro_id):
-    favoritos = session.get('favoritos', [])
-    if livro_id not in favoritos:
-        favoritos.append(livro_id)
-        session['favoritos'] = favoritos
-    return redirect(url_for('detalhes', livro_id=livro_id))
-
-#Remover um livro dos favoritos, removendo seu ID da sessão do usuário
-@app.route('/remover_favorito/<int:livro_id>')
-def remover_favorito(livro_id):
-    favoritos = session.get('favoritos', [])
-    if livro_id in favoritos:
-        favoritos.remove(livro_id)
-        session['favoritos'] = favoritos
-    return redirect(url_for('detalhes', livro_id=livro_id))
-
-
-#Exibir a descrição de um livro específico, incluindo a informação se ele está nos favoritos.
-@app.route('/descricao/<int:livro_id>')
-def descricao(livro_id):
-    livro = next((livro for livro in livros if livro['id'] == livro_id), None)
-    favorito = livro_id in session.get('favoritos', [])
-    return render_template('descricao.html', livro=livro, favorito=favorito)
-
-#Exibir a lista de livros que o usuário marcou como favoritos
-@app.route('/favoritos')
-def lista_favoritos():
-    favoritos = session.get('favoritos', [])
-    livros_favoritos = [livro for livro in livros if livro['id'] in favoritos]
-    return render_template('favoritos.html', livros=livros_favoritos)
-
-# Rotas de Administração
-@app.route('/admin')
-def admin():
-    return render_template('admin/index.html', livros=livros)
-
-
-#Página para adicionar um novo livro ao catálogo
-@app.route('/admin/adicionar', methods=['GET', 'POST'])
-def adicionar_livro():
-    if request.method == 'POST':
-        titulo = request.form.get('titulo')
-        autor = request.form.get('autor')
-        ano = int(request.form.get('ano'))
-        descricao = request.form.get('descricao')
-        novo_id = max(livro['id'] for livro in livros) + 1
-        livros.append({
-            'id': novo_id,
-            'titulo': titulo,
-            'autor': autor,
-            'ano': ano,
-            'descricao': descricao
-        })
-        return redirect(url_for('admin'))
-    return render_template('admin/adicionar.html')
-
-
-#Página para editar as informações de um livro existente
-@app.route('/admin/editar/<int:livro_id>', methods=['GET', 'POST'])
-def editar_livro(livro_id):
-    livro = next((livro for livro in livros if livro['id'] == livro_id), None)
-    if request.method == 'POST':
-        livro['titulo'] = request.form.get('titulo')
-        livro['autor'] = request.form.get('autor')
-        livro['ano'] = int(request.form.get('ano'))
-        livro['descricao'] = request.form.get('descricao')
-        return redirect(url_for('admin'))
-    return render_template('admin/editar.html', livro=livro)
-
-
-#Excluir um livro do catálogo com base no ID fornecido
-@app.route('/admin/excluir/<int:livro_id>')
-def excluir_livro(livro_id):
-    global livros
-    livros = [livro for livro in livros if livro['id'] != livro_id]
-    return redirect(url_for('admin'))
-
-if __name__ == '__main__':
-    app.run(debug=True)
