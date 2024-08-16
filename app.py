@@ -1,69 +1,52 @@
-from flask import Flask, render_template, flash, redirect, request, url_for, session
+from flask import Flask, render_template, redirect, request
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'sua-palavra-secreta'
-
-
-from flask import Flask, render_template
-
-app = Flask(__name__)
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/integrantes')
-def integrantes():
-    return render_template('integrates.html')
 
-
-
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['post'])
 def login():
-    if request.method == 'POST':
-        email = request.form['email']
-        senha = request.form['senha']
-        if email == "usuario@example.com" and senha == "senha123":
-            return redirect(url_for('usuario')) 
-        else:
-            return "Credenciais inválidas", 
-        
-    return render_template('logi.html')
+    nome = request.form.get('nome')
+    nome = request.form.get('senha')
+
+    if nome == 'igor' and senha =='123':
+         return render_template("usuario.html")
+
+    print('nome')
+    print('senha')
+    return redirect('/')
 
 
-@app.route('/usuario')
+@app.route('/')
+def cadastro():
+    return render_template('cadastro.html')
+
+@app.route('/')
 def usuario():
-    return render_template('biblioteca.html')
+    return render_template('usuario.html')
 
+@app.route('/')
+def paginainicial():
+    return render_template('paginainicial.html')
 
-@app.route('/pagina-inicial')
-def pagina_inicial():
-    return render_template('pagina_inicial.html')
-
-
-@app.route('/cadastrar', methods=['POST'])
-def cadastrar():
-    nome = request.form['nome']
-    email = request.form['email']
-    senha = request.form['senha']
-    confirmar_senha = request.form['confirmar-senha']
-    
-    if senha != confirmar_senha:
-        flash('As senhas não coincidem. Tente novamente.')
-        return redirect(url_for('cadastro'))
-
-    flash('Cadastro realizado com sucesso!')
-    return redirect(url_for('cadastro'))
-
-
-@app.route('/adm')
+@app.route('/')
 def adm():
     return render_template('adm.html')
 
 
+@app.route('/')
+def integrate():
+    return render_template('integrate.html')
+
+
+
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
 
