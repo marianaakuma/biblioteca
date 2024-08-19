@@ -8,7 +8,7 @@
 <body>
     <header>
         <div class="header-content">
-            <img src="logo.png" alt="Logo" class="logo">
+            <img src="{{ url_for('static', filename='imagens/logo.png') }}" alt="Logo" class="logo">
             <h1>Minha Biblioteca</h1>
         </div>
     </header>
@@ -27,61 +27,66 @@
         <div class="book-gallery">
             <div class="book-row">
                 <figure>
-                    <a href="https://ibb.co/v1JRqWD">
-                        <img src="https://i.ibb.co/v1JRqWD/metro-tecido-tricoline-liso-cinza-claro-100-algodao-amarelo-bebe.webp" alt="Livro 1">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='imagens/livro1.jpg') }}" alt="Livro 1">
                     </a>
-                    <figcaption>Título do Livro 1</figcaption>
+                    <figcaption>1- A Menina que Roubava Livros</figcaption>
                 </figure>
                 <figure>
-                    <a href="https://ibb.co/v1JRqWD">
-                        <img src="https://i.ibb.co/v1JRqWD/metro-tecido-tricoline-liso-cinza-claro-100-algodao-amarelo-bebe.webp" alt="Livro 2">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='imagens/livro2.jpg') }}" alt="Livro 2">
                     </a>
-                    <figcaption>Título do Livro 2</figcaption>
+                    <figcaption>2 - A Revolução dos Bichos</figcaption>
                 </figure>
                 <figure>
-                    <a href="https://ibb.co/v1JRqWD">
-                        <img src="https://i.ibb.co/v1JRqWD/metro-tecido-tricoline-liso-cinza-claro-100-algodao-amarelo-bebe.webp" alt="Livro 3">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='imagens/livro3.jpg') }}" alt="Livro 3">
                     </a>
-                    <figcaption>Título do Livro 3</figcaption>
+                    <figcaption>Cem Anos de Solidão </figcaption>
                 </figure>
                 <figure>
-                    <a href="https://ibb.co/v1JRqWD">
-                        <img src="https://i.ibb.co/v1JRqWD/metro-tecido-tricoline-liso-cinza-claro-100-algodao-amarelo-bebe.webp" alt="Livro 4">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='imagens/livro4.jpg') }}" alt="Livro 4">
                     </a>
-                    <figcaption>Título do Livro 4</figcaption>
+                    <figcaption>Dom Casmurro</figcaption>
                 </figure>
                 <figure>
-                    <a href="https://ibb.co/v1JRqWD">
-                        <img src="https://i.ibb.co/v1JRqWD/metro-tecido-tricoline-liso-cinza-claro-100-algodao-amarelo-bebe.webp alt="Livro 5">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='imagens/livro5.jpg') }}" alt="Livro 5">
                     </a>
-                    <figcaption>Título do Livro 5</figcaption>
+                    <figcaption>George Orwell</figcaption>
                 </figure>
             </div>
             <div class="book-row">
                 <figure>
-                        <img src="https://i.ibb.co/v1JRqWD/metro-tecido-tricoline-liso-cinza-claro-100-algodao-amarelo-bebe.webp" alt="Livro 6">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='imagens/livro6.jpg') }}" alt="Livro 6">
                     </a>
-                    <figcaption>Título do Livro 6</figcaption>
+                    <figcaption>O Apanhador no Campo de Centeio</figcaption>
                 </figure>
                 <figure>
-                        <img src="https://i.ibb.co/v1JRqWD/metro-tecido-tricoline-liso-cinza-claro-100-algodao-amarelo-bebe.webp" alt="Livro 7">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='imagens/livro7.jpg') }}" alt="Livro 7">
                     </a>
-                    <figcaption>Título do Livro 7</figcaption>
+                    <figcaption>O Senhor dos Anéis: A Sociedade do Anel</figcaption>
                 </figure>
                 <figure>
-                        <img src="https://i.ibb.co/v1JRqWD/metro-tecido-tricoline-liso-cinza-claro-100-algodao-amarelo-bebe.webp" alt="Livro 8">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='imagens/livro8.jpg') }}" alt="Livro 8">
                     </a>
-                    <figcaption>Título do Livro 8</figcaption>
+                    <figcaption>O Sol é para Todos</figcaption>
                 </figure>
                 <figure>
-                        <img src="https://i.ibb.co/v1JRqWD/metro-tecido-tricoline-liso-cinza-claro-100-algodao-amarelo-bebe.webp" alt="Livro 9">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='imagens/livro9.jpg') }}" alt="Livro 9">
                     </a>
-                    <figcaption>Título do Livro 9</figcaption>
+                    <figcaption>O-Pequeno-Principe</figcaption>
                 </figure>
                 <figure>
-                        <img src="https://i.ibb.co/v1JRqWD/metro-tecido-tricoline-liso-cinza-claro-100-algodao-amarelo-bebe.webp" alt="Livro 10">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='imagens/livro10.jpg') }}" alt="Livro 10">
                     </a>
-                    <figcaption>Título do Livro 10</figcaption>
+                    <figcaption>orgulho e preconceito</figcaption>
                 </figure>
             </div>
         </div>
