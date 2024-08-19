@@ -8,22 +8,15 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/login', methods=['post'])
+@app.route('/')
 def login():
-    nome = request.form.get('nome')
-    nome = request.form.get('senha')
-
-    if nome == 'igor' and senha =='123':
-         return render_template("usuario.html")
-
-    print('nome')
-    print('senha')
-    return redirect('/')
+    return render_template('login.html')
 
 
 @app.route('/')
 def cadastro():
     return render_template('cadastro.html')
+
 
 @app.route('/')
 def usuario():
@@ -41,10 +34,6 @@ def adm():
 @app.route('/')
 def integrate():
     return render_template('integrate.html')
-
-
-
-
 
 
 if __name__ == '__main__':
