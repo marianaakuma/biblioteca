@@ -5,15 +5,15 @@ app.config['SECRET_KEY'] = 'sua-palavra-secreta'
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('pagina inicial.html')
 
 
-@app.route('/')
+@app.route('/login')
 def login():
     return render_template('login.html')
 
 
-@app.route('/')
+@app.route('/cadastro')
 def cadastro():
     return render_template('cadastro.html')
 
