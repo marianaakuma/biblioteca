@@ -4,9 +4,15 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'sua-palavra-secreta'
 
 
-@app.route('/pagina inicial')
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/paginainicial')
 def paginainicial():
-    return render_template('/pagina inicial.html')
+    return render_template('pagina inicial.html')
 
 @app.route('/login')
 def login():
